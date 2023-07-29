@@ -4,6 +4,22 @@
     <title>SHOPCELL</title>
 </head>
 <body>
-Hello, SHOPCELL!
+<h1>SHOPCELL</h1><hr>
+<h4>Goods from all over Azerbaijan</h4>
+<#list products as product>
+     <div>
+         <p><b>${product.title}</b> ${product.price} | <a href="/product/${product.id}">More...</a></p>
+     </div>
+</#list>
+<hr>
+<h3>Create new product</h3>
+<form action="/product/create" method="post"></form>
+    Headline: <input type="text" name="title"/><br><br>
+    Ad description: <input type="text" name="description"/><br><br>
+    Price: <input type="number" name="price"/><br><br>
+    City: <input type="text" name="city"/><br><br>
+    Name: <input type="text" name="author"/><br><br>
+    <input type="submit" value="Add product"/>
+</form>
 </body>
 </html>
