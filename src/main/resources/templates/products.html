@@ -5,21 +5,30 @@
 </head>
 <body>
 <h1>SHOPCELL</h1><hr>
-<h4>Goods from all over Azerbaijan</h4>
+<h4>Azərbaycanin hər yerindən mallar</h4>
+<form action="/" method="get">
+    Reklam başliğina görə axtarin: <input type="text" name="title"><br>
+    <input type="submit" value="Axtariş"/>
+</form>
 <#list products as product>
-     <div>
-         <p><b>${product.title}</b> ${product.price} | <a href="/product/${product.id}">More...</a></p>
-     </div>
+<div>
+    <p><b>${product.title}</b> ${product.price} руб. | <a href="/product/${product.id}">Daha çox...</a></p>
+</div>
+<#else>
+<h3>Məhsul yoxdur</h3>
 </#list>
 <hr>
-<h3>Create new product</h3>
-<form action="/product/create" method="post"></form>
-    Headline: <input type="text" name="title"/><br><br>
-    Ad description: <input type="text" name="description"/><br><br>
-    Price: <input type="number" name="price"/><br><br>
-    City: <input type="text" name="city"/><br><br>
-    Name: <input type="text" name="author"/><br><br>
-    <input type="submit" value="Add product"/>
+<h3>Yeni məhsul yaratmaq</h3>
+<form action="/product/create" method="post" enctype="multipart/form-data">
+    Reklam başliği: <input type="text" name="title"/><br><br>
+    Məhsul təsvirləri: <input type="text" name="description"/><br><br>
+    Qiymeti: <input type="number" name="price"/><br><br>
+    Şəhər: <input type="text" name="city"/><br><br>
+    Ad: <input type="text" name="author"/><br><br>
+    Birinc şəkil: <input type="file" name="file1"/><br><br>
+    İkinci şəkil: <input type="file" name="file2"/><br><br>
+    Üçuncu şəkil: <input type="file" name="file3"/><br><br>
+    <input type="submit" value="Məhsul əlavə edin"/>
 </form>
 </body>
 </html>

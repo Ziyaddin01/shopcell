@@ -5,17 +5,18 @@
 </head>
 <body>
 <h1>SHOPCELL</h1><hr>
-<h4>Product information</h4>
-<b>Product names: </b>${product.title}<br>
-<b>Product description: </b>${product.description}<br>
-<b>Price: </b>${product.price}<br>
-<b>City: </b>${product.city}<br>
-<b>Author: </b>${product.Author}<br>
+<h4>Məhsul təfərrüatlari</h4>
+<#list images as img>
+      <img src="/images/${img.id}" height="60px"/><br><br>
+</#list>
+<b>Məhsulun adi: </b>${product.title}<br>
+<b>Məhsul təsviri: </b>${product.description}<br>
+<b>Qiyməti: </b>${product.price}<br>
+<b>Şəhər: </b>${product.city}<br>
+<b>Müəllif: </b>${product.author}<br>
 <hr>
-
 <form action="/product/delete/${product.id}" method="post">
-
-<input type="submit" value="Delete product"/>
+    <input type="submit" value="Elementi silin"/>
 </form>
 </body>
 </html>
