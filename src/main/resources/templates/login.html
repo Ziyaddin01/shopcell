@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SHOPCELL</title>
+</head>
+<body>
+<h1>SHOPCELL</h1><hr>
+<h4>Avtorizasiya</h4>
+<form action="/login" method="post">
+    E-poçt: <input type="email" name="username"><br><br>
+    Parol: <input type="password" name="password"><br><br>
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <input type="submit" value="Qiriş"/>
+</form>
+<a href="/registration">Qeydiyyatdan keç</a>
+</body>
+</html>

@@ -4,7 +4,11 @@
     <title>SHOPCELL</title>
 </head>
 <body>
-<h1>SHOPCELL</h1><hr>
+<h1>SHOPCELL | <a href="/login">Qiriş</a></h1><hr>
+<form action="/logout" method="post">
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <input type="submit" value="Çixiş"/>
+</form>
 <h4>Azərbaycanin hər yerindən mallar</h4>
 <form action="/" method="get">
     Reklam başliğina görə axtarin: <input type="text" name="title"><br>
