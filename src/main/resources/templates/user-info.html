@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SHOPCELL</title>
+</head>
+<body>
+<h1>SHOPCELL</h1><hr>
+<h3>İstifadəçi haqqinda ətraflı məlumat ${user.name}</h3>
+<b>Telefon nömrəsi: </b> ${user.phoneNumber}<br>
+<b>Email: </b> ${user.email}<br>
+<h4>İstifadəçi malları ${user.name}</h4>
+<#list products as product>
+<div>
+    <p><b>${product.title}</b> ${product.price} azn. | <a href="/product/${product.id}">Daha çox...</a></p>
+</div>
+<#else>
+<h3>Məhsul yoxdur</h3>
+</#list>
+<#if errorMessage??>
+<h2 style="color: red">${errorMessage}</h2>
+</#if>
+</body>
+</html>

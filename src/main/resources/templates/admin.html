@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SHOPCELL</title>
+</head>
+<body>
+<h1>SHOPCELL</h1><hr>
+<h4>Admin Paneli</h4>
+<table border="1">
+    <tr>
+        <th>Email</th>
+        <th>Telefon nömrəsi</th>
+        <th>Fəaliyyət</th>
+        <th>Rollar</th>
+        <th>Ban</th>
+        <th>Redaktə</th>
+        <th>Ətraflı məlumat</th>
+    </tr>
+    <#list users as user
+    <tr>
+        <th>${user.email}</th>
+        <th>${user.phoneNumber}</th>
+        <th><#if user.active>true<#else>false</#if></th>
+        <th><#list user.roles as role>${role}></#list></th>
+        <th><form action="/admin/user/ban/${user.id}" method="post">
+            <input type="hidden" name="_csrf" value="${_csrf.token}">
+            <input type="submit" value="Ban">
+        </form>
+        </th>
+        <th><a href="/admin/user/edit/${user.id}">Redaktə</a></th>
+        <th><a href="/user/${user.id}">Ətraflı məlumat</a></th>
+    </tr>
+    <#else>
+    <h3>İstifadəçilər yoxdur</h3>
+    </#list>
+</table>
+<hr>
+<h3>Yeni məhsul yarat</h3>
+<form action="/product/create" method="post" enctype="multipart/form-data">
+    Reklam başlığı: <input type="text" name="title"/><br><br>
+    Reklam təsvirləri: <input type="text" name="description"/><br><br>
+    Qiyməti: <input type="number" name="price"/><br><br>
+    Şəhər: <input type="text" name="city"/><br><br>
+    1 şəkil: <input type="file" name="file1"/><br><br>
+    2 şəkil: <input type="file" name="file2"/><br><br>
+    3 şəkil: <input type="file" name="file3"/><br><br>
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <input type="submit" value="Məhsul əlavə et"/>
+</form>
+
+</body>
+</html>
