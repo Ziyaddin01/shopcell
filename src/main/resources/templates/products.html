@@ -4,15 +4,21 @@
     <title>SHOPCELL</title>
 </head>
 <body>
-<h1>SHOPCELL | <a href="/login">Qiriş</a></h1><hr>
+<h1>SHOPCELL</h1><hr>
+<#if user.email??>
+<h3>İstifadəçi adı: <i>${user.name}</i></h3>
 <form action="/logout" method="post">
     <input type="hidden" name="_csrf" value="${_csrf.token}">
-    <input type="submit" value="Çixiş"/>
+    <input type="submit" value="Выйти"/>
 </form>
-<h4>Azərbaycanin hər yerindən mallar</h4>
+<#else>
+<a href="/login">Daxil ol</a></h1>
+</#if>
+<hr>
+<h4>Azərbaycanın hər yerindən mallar</h4>
 <form action="/" method="get">
-    Reklam başliğina görə axtarin: <input type="text" name="title"><br>
-    <input type="submit" value="Axtariş"/>
+    Reklam adı ilə axtarin: <input type="text" name="title">
+    <input type="submit" value="Axtarış"/>
 </form>
 <#list products as product>
 <div>
@@ -21,18 +27,20 @@
 <#else>
 <h3>Məhsul yoxdur</h3>
 </#list>
+<#if user.email??>
 <hr>
-<h3>Yeni məhsul yaratmaq</h3>
+<h3>Yeni məhsul yarat</h3>
 <form action="/product/create" method="post" enctype="multipart/form-data">
-    Reklam başliği: <input type="text" name="title"/><br><br>
-    Məhsul təsvirləri: <input type="text" name="description"/><br><br>
-    Qiymeti: <input type="number" name="price"/><br><br>
+    Reklam başlığı: <input type="text" name="title"/><br><br>
+    Reklam təsvirləri: <input type="text" name="description"/><br><br>
+    Qiyməti: <input type="number" name="price"/><br><br>
     Şəhər: <input type="text" name="city"/><br><br>
-    Ad: <input type="text" name="author"/><br><br>
-    Birinc şəkil: <input type="file" name="file1"/><br><br>
-    İkinci şəkil: <input type="file" name="file2"/><br><br>
-    Üçuncu şəkil: <input type="file" name="file3"/><br><br>
-    <input type="submit" value="Məhsul əlavə edin"/>
+    1 şəkil: <input type="file" name="file1"/><br><br>
+    2 şəkil: <input type="file" name="file2"/><br><br>
+    3 şəkil: <input type="file" name="file3"/><br><br>
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <input type="submit" value="Məhsul əlavə et"/>
 </form>
+</#if>
 </body>
 </html>

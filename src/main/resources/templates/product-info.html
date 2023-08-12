@@ -13,10 +13,7 @@
 <b>Məhsul təsviri: </b>${product.description}<br>
 <b>Qiyməti: </b>${product.price}<br>
 <b>Şəhər: </b>${product.city}<br>
-<b>Müəllif: </b>${product.author}<br>
-<hr>
-<form action="/product/delete/${product.id}" method="post">
-    <input type="submit" value="Elementi silin"/>
-</form>
+<b>Müəllif: </b>${product.user.name}<br>
+<b>Telefon nömrasi: </b>${product.user.phoneNumber}<br>
 </body>
 </html>
